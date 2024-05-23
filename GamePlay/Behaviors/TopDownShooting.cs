@@ -21,17 +21,17 @@ public class TopDownShooting : MonoBehaviour
     protected void Shooting()
     {
         var currentStat = FlightDataManager.Instance.PlayerFlightStat.CurrentStat;
-        Shooting(currentStat.bulletNum, currentStat.bulletAngle, weaponPivot.position, currentStat.AtkDamage, currentStat.bulletSpeed, currentStat.BulletAnimator);
+        BulletShooting(currentStat.bulletNum, currentStat.bulletAngle, weaponPivot.position, currentStat.AtkDamage, currentStat.bulletSpeed, currentStat.BulletAnimator);
     }
 
     protected void Shooting(AttackSO attackSO)
     {
-        Shooting(attackSO.BulletNum, attackSO.BulletAngle, weaponPivot.position, attackSO.AtkDamage, attackSO.BulletSpeed, attackSO.BulletAnimator, attackSO);
+        BulletShooting(attackSO.BulletNum, attackSO.BulletAngle, weaponPivot.position, attackSO.AtkDamage, attackSO.BulletSpeed, attackSO.BulletAnimator, attackSO);
     }
 
     protected void Shooting(AttackSO attackSO, Transform position)
     {
-        Shooting(attackSO.BulletNum, attackSO.BulletAngle, position.position, attackSO.AtkDamage, attackSO.BulletSpeed, attackSO.BulletAnimator, attackSO);
+        BulletShooting(attackSO.BulletNum, attackSO.BulletAngle, position.position, attackSO.AtkDamage, attackSO.BulletSpeed, attackSO.BulletAnimator, attackSO);
     }
 
     protected void Shooting(AttackSO attackSO, float angle)
@@ -57,7 +57,7 @@ public class TopDownShooting : MonoBehaviour
         bomb.gameObject.SetActive(false);
     }
 
-    private void Shooting(int numberOfProjectiles, float angleSpace, Vector3 position, float damage, float speed, RuntimeAnimatorController bulletAnimator, AttackSO attackSO = null)
+    private void BulletShooting(int numberOfProjectiles, float angleSpace, Vector3 position, float damage, float speed, RuntimeAnimatorController bulletAnimator, AttackSO attackSO = null)
     {
         float minAngle = -(numberOfProjectiles / 2f) * angleSpace + 0.5f * angleSpace;
 
